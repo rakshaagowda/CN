@@ -6,7 +6,7 @@ public class UDPServer {
     public static void main(String[] args) throws Exception {
         System.out.println("UDP Server is running...");
         // Additional server code would be implemented here
-        DatagramSocket serversocket = new DatagramSocket(5454);
+       try( DatagramSocket serversocket = new DatagramSocket(5454)){
         byte[] receiveData = new byte[1024];
         byte[] sendData = new byte[1024];
         while(true){
@@ -22,6 +22,14 @@ public class UDPServer {
             serversocket.send(sendPacket);
         } 
 
-    
+    }catch(Exception e){
+        System.out.println(e);
+
+   
+        }
+
     }
+
+
+
 }
